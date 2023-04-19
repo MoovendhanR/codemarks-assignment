@@ -17,13 +17,13 @@ router.get("/",async(req, res) => {
      }
 })
 router.post("/register",async(req, res) => {
-    const {email, password , name, age} = req.body
+    const {email, password , confirm} = req.body
     try{
        bcrypt.hash(password, 5, async(err,secure_password) => {
               if(err) {
                console.error(err)
               }else{
-                 const user=await User.create({email,password:secure_password,name,age});
+                 const user=await User.create({email,password:secure_password,confirm});
                  res.status(201).send(user)
               }
        })
