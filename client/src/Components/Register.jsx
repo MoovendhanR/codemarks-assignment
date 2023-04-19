@@ -69,12 +69,7 @@ const Register=()=>{
           </Heading>
         </Stack>
         
-           {/* <h1>this is Register page</h1>
-           <input type="text" placeholder="Enter name" value={name} onChange={(e)=>setName(e.target.value)}/>
-           <input type="text" placeholder="Enter email"value={email}onChange={(e)=>setEmail(e.target.value)}/>
-           <input type="password" placeholder="Enter password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
-           <input type="text" placeholder="Enetr age" value={age} onChange={(e)=>setAge(e.target.value)}/>
-           <button onClick={handleSubmit}>Submit</button> */}
+        
             <Flex
       minH={'100vh'}
       align={'center'}
@@ -158,6 +153,7 @@ const Register=()=>{
               </Button>
             </Stack>
                <Text textAlign="center" as='u'>or</Text>
+             <Link as={RouterLink} to="/login">
                <Stack spacing={10} pt={2}>
               <Button
                 loadingText="Submitting"
@@ -168,11 +164,10 @@ const Register=()=>{
                    bg: 'green.500',
                   }}
                   >
-                    <Link as={RouterLink} to="/login">
                    Sign In
-                    </Link>
               </Button>
             </Stack>
+             </Link>
           </Stack>
         </Box>
       </Stack>
