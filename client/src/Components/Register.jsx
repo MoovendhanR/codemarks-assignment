@@ -57,6 +57,17 @@ const Register=()=>{
     //  .catch(err=>console.log(err))
     return(
         <Container>
+            <Stack align={'center'}>
+          <Heading fontSize={'4xl'} textAlign={'center'}
+         color={"rgb(14,116,105)"}
+         _hover={{
+            color: "rgb(31,195,158)"
+           }}
+           as='u'
+          >
+           Cross val.
+          </Heading>
+        </Stack>
         
            {/* <h1>this is Register page</h1>
            <input type="text" placeholder="Enter name" value={name} onChange={(e)=>setName(e.target.value)}/>
@@ -71,10 +82,10 @@ const Register=()=>{
       bg={useColorModeValue('gray.50', 'gray.800')}>
       <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
         <Stack align={'center'}>
-          <Heading fontSize={'4xl'} textAlign={'center'}>
+          <Heading as='u' fontSize={'4xl'} textAlign={'center'}>
            Create Account
           </Heading>
-          <Text fontSize='sm'>Enter your email & password to Sign Up</Text>
+          <Text fontSize='sm' as='u'>Enter your email & password to Sign Up</Text>
 
         </Stack>
         <Box
@@ -146,7 +157,7 @@ const Register=()=>{
                     Create Account
               </Button>
             </Stack>
-               <Text textAlign="center">or</Text>
+               <Text textAlign="center" as='u'>or</Text>
                <Stack spacing={10} pt={2}>
               <Button
                 loadingText="Submitting"
