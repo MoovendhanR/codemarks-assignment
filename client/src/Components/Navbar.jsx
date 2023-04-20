@@ -37,7 +37,12 @@ const NavLink = ({ children }) => (
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
+  function handleClearLocalStorage() {
+    localStorage.clear();
+    console.log('localStorage cleared');
+  
+    window.location.reload(false);
+  }
   return (
     <>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
@@ -95,7 +100,10 @@ export default function Navbar() {
                 </Link>
                 </MenuItem>
                 <MenuDivider />
-                <MenuItem>Logout</MenuItem>
+                <Button onClick={handleClearLocalStorage}>
+
+                <MenuItem >Logout</MenuItem>
+                </Button>
               </MenuList>
             </Menu>
           </Flex>

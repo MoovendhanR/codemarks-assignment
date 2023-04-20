@@ -37,12 +37,13 @@ import axios from "axios";
           }
         //   console.log(payload)
 
-          axios.post("http://localhost:5000/users/login",payload)
+          axios.post("https://codemark11-assignment.onrender.com/users/login",payload)
           // .then(res=>res.json())
           .then(res=>{
             let token=res.data.token;
             console.log(token);
-            localStorage.setItem("token",res.data.token);
+           localStorage.setItem("token",res.data.token);
+            window.location.reload(false);
            
         })
         .then(()=>{
@@ -157,7 +158,7 @@ import axios from "axios";
         </Box>
       </Stack>
     </Flex>
-        </Container>
+  </Container>
     )
 }
 

@@ -38,7 +38,7 @@ const Register=()=>{
           }
           console.log(payload)
 
-          fetch("http://localhost:5000/users/register",{
+          fetch("https://codemark11-assignment.onrender.com/users/register",{
              method:"POST",
              body:JSON.stringify(payload),
              headers:{
