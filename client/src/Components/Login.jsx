@@ -18,11 +18,12 @@ import {
 } from '@chakra-ui/react';
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { EmailIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import axios from "axios";
+import SetAuthToken from "./SetAuthToken";
 
 
 
-
-const Login=()=>{
+ const Login=()=>{
   const navigate=useNavigate();
   const [showPassword, setShowPassword] = useState(false);
     const [email,setEmail]=useState("")
@@ -36,17 +37,12 @@ const Login=()=>{
           }
         //   console.log(payload)
 
-          fetch("http://localhost:5000/users/login",{
-             method:"POST",
-             body:JSON.stringify(payload),
-             headers:{
-                "Content-type": "application/json"
-             }
-          })
-          .then(res=>res.json())
+          axios.post("http://localhost:5000/users/login",payload)
+          // .then(res=>res.json())
           .then(res=>{
-            console.log(res)
-            localStorage.setItem("token",res.token);
+            let token=res.data.token;
+            localStorage.setItem("token",res.data.token);
+            SetAuthToken(token)
         }).then(()=>{
             navigate("/")
         })
@@ -57,7 +53,8 @@ const Login=()=>{
     //    res.json())
     //  .then(res=>console.log(res))
     //  .catch(err=>console.log(err))
-    return(
+    
+        return(
         <Container>
           <Stack align={'center'}>
           <Heading fontSize={'4xl'} textAlign={'center'}
@@ -159,5 +156,7 @@ const Login=()=>{
         </Container>
     )
 }
+
+
 
 export default Login;
