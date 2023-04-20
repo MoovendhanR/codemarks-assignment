@@ -8,7 +8,23 @@ import {
   Image,
   useColorModeValue,
   Flex,
+  useDisclosure,
+  RadioGroup,
+  Button,
 } from '@chakra-ui/react';
+import {
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+   
+    ModalCloseButton,
+  } from '@chakra-ui/react'
+import { useRef, useState } from 'react';
+import DetailedCard from './Detailedcard';
+import { TriangleDownIcon } from '@chakra-ui/icons';
 
 export default function BlogCard({item}) {
   return (
@@ -59,8 +75,47 @@ export default function BlogCard({item}) {
             {item.blog}
           </Text>
         </Stack>
-       
+       <ScrollingExample item={item}/>
       </Box>
     </Center>
   );
 }
+
+
+
+function ScrollingExample({item}) {
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const [scrollBehavior, setScrollBehavior] = useState('inside')
+  
+    const btnRef = useRef(null)
+    return (
+      <>
+        <RadioGroup value={scrollBehavior} onChange={setScrollBehavior}>
+        
+        </RadioGroup>
+  
+        <Button mt={3} ref={btnRef} onClick={onOpen}>
+         Read More <TriangleDownIcon/>
+        </Button>
+  
+        <Modal
+          onClose={onClose}
+          finalFocusRef={btnRef}
+          isOpen={isOpen}
+          scrollBehavior={scrollBehavior}
+        >
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Modal Title</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+                 <DetailedCard item={item}/>
+            </ModalBody>
+            <ModalFooter>
+              <Button onClick={onClose}>Close</Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      </>
+    )
+  }

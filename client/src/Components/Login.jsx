@@ -16,19 +16,19 @@ import {
   Container,
   InputRightElement,
 } from '@chakra-ui/react';
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Link as RouterLink, useNavigate} from "react-router-dom";
 import { EmailIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import axios from "axios";
-import SetAuthToken from "./SetAuthToken";
+// import SetAuthToken from "./SetAuthToken";
 
 
 
  const Login=()=>{
-  const navigate=useNavigate();
   const [showPassword, setShowPassword] = useState(false);
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("");
-  
+
+  const navigate=useNavigate()
 
       const handleSubmit=()=>{
           const payload={
@@ -41,12 +41,16 @@ import SetAuthToken from "./SetAuthToken";
           // .then(res=>res.json())
           .then(res=>{
             let token=res.data.token;
+            console.log(token);
             localStorage.setItem("token",res.data.token);
-            SetAuthToken(token)
-        }).then(()=>{
-            navigate("/")
+           
+        })
+        .then(()=>{
+            navigate("/blog")
         })
           .catch(err=>console.log(err))
+
+  
       }
     //   fetch("http://localhost:5000/users/")
     //   .then(res=>

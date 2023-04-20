@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes} from 'react-router-dom';
 import Login from './Login';
 import Register from './Register';
 import HomePage from './HomePage';
@@ -6,7 +6,6 @@ import Blog from './Blog';
 // import RouteGuard from './RouteGuard';
 // import HomePage from './HomePage';
 // import { history } from './history';
-
 
 const AllRoutes = () => {
   return (
@@ -22,3 +21,18 @@ const AllRoutes = () => {
 }
 
 export default AllRoutes
+
+// mport { BrowserRouter, Route, Redirect } from 'react-router-dom';
+
+// function App() {
+//   return (
+//     <BrowserRouter>
+//       <Route exact path="/">
+//         {loggedIn ? <Redirect to="/home" /> : <LoginPage />}
+//       </Route>
+//       <Route path="/home">
+//         <HomePage />
+//       </Route>
+//     </BrowserRouter>
+//   );
+// }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   Heading,
@@ -72,12 +72,18 @@ const Blog = () => {
     const [error, setError] = useState(false);
 
     const handleChange = (e) => {
+        e.preventDefault()
         setSearch(e.target.value);
-        const searchResults = data.filter((item) =>
+        const searchResults = data1.filter((item) =>
           item.name.toLowerCase().includes(search.toLowerCase())
         );
         setData(searchResults);
-      };
+        
+    };
+      useEffect(()=>{
+            setData(data);
+      },[data])
+
     
 
   return (
