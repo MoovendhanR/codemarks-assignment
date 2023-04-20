@@ -25,6 +25,8 @@ I developed this small blog application  within a day.
 
 
 Deployment
+
+
 -Frontend - Vercel<br/>
 -Backend - Render
 
