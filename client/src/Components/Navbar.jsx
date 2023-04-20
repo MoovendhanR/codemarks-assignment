@@ -17,6 +17,7 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import { Link as RouterLink } from "react-router-dom";
 
 const Links = ['Home', 'Features', 'Testimonials' , 'Blog', 'Contact us'];
 
@@ -29,7 +30,7 @@ const NavLink = ({ children }) => (
       textDecoration: 'none',
       bg: useColorModeValue('gray.200', 'gray.700'),
     }}
-    href={'#'}>
+    href={'/blog'}>
     {children}
   </Link>
 );
@@ -87,10 +88,18 @@ export default function Navbar() {
                 />
               </MenuButton>
               <MenuList>
-                <MenuItem>Link 1</MenuItem>
-                <MenuItem>Link 2</MenuItem>
+                <MenuItem>
+                <Link as={RouterLink} to="/register">
+                Create Account
+                </Link>
+                </MenuItem>
+                <MenuItem>
+                <Link as={RouterLink} to="/login">  
+                Sign In
+                </Link>
+                </MenuItem>
                 <MenuDivider />
-                <MenuItem>Link 3</MenuItem>
+                <MenuItem>Logout</MenuItem>
               </MenuList>
             </Menu>
           </Flex>
